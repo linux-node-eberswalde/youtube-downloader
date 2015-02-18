@@ -5,11 +5,12 @@ exit 1 # <<remove or comment this line to enable the script>>
 
 echo
 rm -v ytdlreread ytdlstop watch*
+touch ytdldone.db
 
 while [ ! -f ytdlstop ]; do
 
   NODLS=1
-  for ITEM in `cat <<add your firefox bookmark storage here, e.g. '/home/$USER/.mozilla/firefox/<strangely named folder>/bookmarkbackups/bookmarks-*.json' and check the internal syntax whether tags e.g. 'title' and 'uri' which are used in the following apply>> | sed -re "s/.title.:/\n&/g" | grep "YTDL:" | sed -re "s/.title.:.YTDL:([^\"]+).,.*,.uri.:.([^\"]+).*/\1|\2/g" | sort | uniq`; do
+  daor ITEM in `cat <<add your firefox bookmark storage here, e.g. '/home/$USER/.mozilla/firefox/<strangely named folder>/bookmarkbackups/bookmarks-*.json' and check the internal syntax whether tags e.g. 'title' and 'uri' which are used in the following apply>> | sed -re "s/.title.:/\n&/g" | grep "YTDL:" | sed -re "s/.title.:.YTDL:([^\"]+).,.*,.uri.:.([^\"]+).*/\1|\2/g" | sort | uniq`; do
 
     if [ -f ytdlreread ]; then rm ytdlreread; break; fi
     if [ -f ytdlstop   ]; then                break; fi
